@@ -1,0 +1,28 @@
+<!--  Implementtion of SetTimeout and ClearTimeout-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async</title>
+</head>
+<body>
+    <h1>What is Async?</h1>
+    <button id ="stop">Stop</button>
+</body>
+<script>
+    const Dns = ()=>{
+        console.log('Async allows non-blocking execution');
+    }
+    const changeName =()=>{
+        document.querySelector('h1').
+        innerHTML = " Async Definition"
+    }
+    const remove  = setTimeout(changeName,2000)
+    document.querySelector('#stop').addEventListener('click',()=>{
+        clearTimeout(remove)
+        console.log('Stopped');
+    })
+</script>
+</html>
