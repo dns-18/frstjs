@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<body style="background-color: #414141; color: white;">
+    <h2>Web Images Analysing</h2>
+    <div>
+        <ul id="image">
+            <li><img src="image1.png" alt="" class="src" id ="nature" "height="100px"></li>
+            <li><a href="https://google.com" id ="google">Google</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+    // Event propogation -> 
+    // 1. Event Bubbling((false = default value)Flow -> Inside to Outside)
+    // 2. Event Capturing((true = default value)Flow -> Outside to Inside )
+
+    document.getElementById('image').addEventListener('click', (e)=>{
+        console.log('Click inside ul');
+    },false)
+    document.getElementById('nature').addEventListener('click', (e)=>{
+        console.log('Nature Clicked');
+        e.stopPropagation()
+    },true)
+
+    document.getElementById('google').addEventListener('click', (e)=>{
+        e.preventDefault()
+        e.stopPropagation()
+        console.log('Google clicked');
+    },false)
+     
+     document.querySelector('#image').addEventListener('click',(e)=>{
+        console.log(e.target.tagName);
+        if(e.target.tagName === 'IMG'){
+            let removeIt = e.target.parentNode
+            removeIt.remove() 
+        } 
+     })
+</script>
+</html>
